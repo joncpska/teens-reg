@@ -11,6 +11,7 @@ import EventDetail from './pages/EventDetail';
 import Registration from './pages/Registration';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
+import ForgotPassword from './pages/ForgotPassword';
 import Dashboard from './pages/admin/Dashboard';
 import FAQ from './pages/FAQ';
 import ProtectedRoute from './components/auth/ProtectedRoute';
@@ -31,6 +32,7 @@ function App() {
                             <Route path="/faq" element={<FAQ />} />
                             <Route path="/login" element={<Login />} />
                             <Route path="/signup" element={<Signup />} />
+                            <Route path="/forgot-password" element={<ForgotPassword />} />
 
                             {/* Protected Routes */}
                             <Route

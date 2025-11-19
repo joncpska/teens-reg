@@ -1,4 +1,4 @@
-// src/pages/Login.jsx
+// src/pages/Login.jsx - Update the forgot password section
 import React, { useState } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
@@ -32,7 +32,9 @@ const Login = () => {
         } catch (error) {
             console.error('Login error:', error);
             showToast(
-                'Failed to sign in. Please try again.',
+                error.message === 'Invalid login credentials'
+                    ? 'Invalid email or password'
+                    : 'Failed to sign in. Please try again.',
                 'error'
             );
         } finally {
@@ -44,7 +46,7 @@ const Login = () => {
         <div className="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
             <div className="sm:mx-auto sm:w-full sm:max-w-md">
                 <div className="flex justify-center">
-                    <div className="bg-primary-600 text-white p-3 rounded-full">
+                    <div className="bg-blue-600 text-white p-3 rounded-full">
                         <LogIn className="h-8 w-8" />
                     </div>
                 </div>
@@ -55,7 +57,7 @@ const Login = () => {
                     Or{' '}
                     <Link
                         to="/signup"
-                        className="font-medium text-primary-600 hover:text-primary-500"
+                        className="font-medium text-blue-600 hover:text-blue-500"
                     >
                         create a new account
                     </Link>
@@ -81,7 +83,7 @@ const Login = () => {
                                             message: 'Invalid email address',
                                         },
                                     })}
-                                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6"
+                                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
                                 />
                                 {errors.email && (
                                     <p className="mt-2 text-sm text-red-600">{errors.email.message}</p>
@@ -105,7 +107,7 @@ const Login = () => {
                                             message: 'Password must be at least 6 characters',
                                         },
                                     })}
-                                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6"
+                                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
                                 />
                                 {errors.password && (
                                     <p className="mt-2 text-sm text-red-600">{errors.password.message}</p>
@@ -119,7 +121,7 @@ const Login = () => {
                                     id="remember-me"
                                     name="remember-me"
                                     type="checkbox"
-                                    className="h-4 w-4 rounded border-gray-300 text-primary-600 focus:ring-primary-600"
+                                    className="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-600"
                                 />
                                 <label htmlFor="remember-me" className="ml-2 block text-sm text-gray-900">
                                     Remember me
@@ -127,12 +129,12 @@ const Login = () => {
                             </div>
 
                             <div className="text-sm">
-                                <button
-                                    type="button"
-                                    className="font-medium text-primary-600 hover:text-primary-500"
+                                <Link
+                                    to="/forgot-password"
+                                    className="font-medium text-blue-600 hover:text-blue-500"
                                 >
                                     Forgot your password?
-                                </button>
+                                </Link>
                             </div>
                         </div>
 
@@ -140,7 +142,7 @@ const Login = () => {
                             <button
                                 type="submit"
                                 disabled={loading}
-                                className="flex w-full justify-center rounded-md bg-primary-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-primary-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600 disabled:opacity-50 disabled:cursor-not-allowed"
+                                className="flex w-full justify-center rounded-md bg-blue-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 disabled:opacity-50 disabled:cursor-not-allowed"
                             >
                                 {loading ? 'Signing in...' : 'Sign in'}
                             </button>
@@ -160,7 +162,7 @@ const Login = () => {
                         <div className="mt-6">
                             <Link
                                 to="/signup"
-                                className="flex w-full justify-center rounded-md border border-gray-300 px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm hover:bg-gray-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600"
+                                className="flex w-full justify-center rounded-md border border-gray-300 px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm hover:bg-gray-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
                             >
                                 Create new account
                             </Link>
