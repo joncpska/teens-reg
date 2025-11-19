@@ -16,7 +16,6 @@ const EventForm = ({ event, onSuccess, onCancel }) => {
         register,
         handleSubmit,
         formState: { errors },
-        // Remove watch since it's not used
     } = useForm({
         defaultValues: event ? {
             title: event.title,
@@ -67,7 +66,6 @@ const EventForm = ({ event, onSuccess, onCancel }) => {
 
     return (
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-            {/* ... rest of the form remains the same ... */}
             <FormInput
                 label="Event Title"
                 type="text"

@@ -30,19 +30,6 @@ const EventManagement = () => {
         fetchEvents();
     }, [showToast]);
 
-    const fetchEvents = async () => {
-        try {
-            const { data, error } = await eventsService.getEvents();
-            if (error) throw error;
-            setEvents(data || []);
-        } catch (error) {
-            console.error('Error fetching events:', error);
-            showToast('Failed to load events', 'error');
-        } finally {
-            setLoading(false);
-        }
-    };
-
     const handleCreate = () => {
         setEditingEvent(null);
         setShowModal(true);
@@ -60,7 +47,8 @@ const EventManagement = () => {
                 if (error) throw error;
 
                 showToast('Event deleted successfully', 'success');
-                fetchEvents();
+                const { data } = await eventsService.getEvents();
+                setEvents(data || []);
             } catch (error) {
                 console.error('Error deleting event:', error);
                 showToast('Failed to delete event', 'error');
@@ -71,6 +59,10 @@ const EventManagement = () => {
     const handleSuccess = () => {
         setShowModal(false);
         setEditingEvent(null);
+        const fetchEvents = async () => {
+            const { data } = await eventsService.getEvents();
+            setEvents(data || []);
+        };
         fetchEvents();
     };
 

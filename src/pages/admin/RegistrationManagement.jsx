@@ -33,7 +33,6 @@ const RegistrationManagement = () => {
         loadData();
     }, [showToast]);
 
-    // ... rest of the component remains the same ...
     const handleExport = async () => {
         try {
             const { data, error } = await registrationsService.exportRegistrations(

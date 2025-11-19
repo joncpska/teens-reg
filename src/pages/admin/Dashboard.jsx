@@ -60,8 +60,14 @@ const Dashboard = () => {
                         <Route path="/" element={<DashboardHome />} />
                         <Route path="/events" element={<EventManagement />} />
                         <Route path="/registrations" element={<RegistrationManagement />} />
-                        <Route path="/reports" element={<div>Reports Coming Soon</div>} />
-                        <Route path="/settings" element={<div>Settings Coming Soon</div>} />
+ts                        <Route path="/reports" element={<div className="text-center py-12">
+                            <h2 className="text-2xl font-bold text-gray-900 mb-4">Reports</h2>
+                            <p className="text-gray-600">Reports feature coming soon</p>
+                        </div>} />
+                        <Route path="/settings" element={<div className="text-center py-12">
+                            <h2 className="text-2xl font-bold text-gray-900 mb-4">Settings</h2>
+                            <p className="text-gray-600">Settings feature coming soon</p>
+                        </div>} />
                     </Routes>
                 </div>
             </div>
